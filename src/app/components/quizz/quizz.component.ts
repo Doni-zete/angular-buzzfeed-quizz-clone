@@ -35,16 +35,37 @@ export class QuizzComponent implements OnInit {
   }
 
   playerChoose(value: string) {
+    this.nextStep();
     this.answers.push(value);
   }
 
   async nextStep() {
-    this.questionIndex + 1;
+    this.questionIndex += 1;
 
     if (this.questionMaxIndex > this.questionIndex) {
       this.questionSelected = this.questions[this.questionIndex];
     } else {
+      const finalAnswer: string = await this.checkResult(this.answers);
       this.finished = true;
+      this.answerSelected =
+        quizz_questions.results[
+          finalAnswer as keyof typeof quizz_questions.results
+        ];
     }
+  }
+
+  checkResult(answers: string[]) {
+    ['A', 'A', 'B', 'A'];
+    const result = this.answers.reduce((previous, current, i, arr) => {
+      if (
+        arr.filter((item) => item === previous).length >
+        arr.filter((item) => item === previous).length
+      ) {
+        return previous;
+      } else {
+        return current;
+      }
+    });
+    return result;
   }
 }
