@@ -73,5 +73,7 @@
 }
 
 .quizz_results >p {
-    font-size: 25px;
+    font-size: 30px;
+    color: white;
+    font-family: Lato, Helvetica, sans-serif;
 }
